@@ -25,36 +25,27 @@
 
 package com.sun.tools.apt.main;
 
+import com.sun.mirror.apt.AnnotationProcessorFactory;
+import com.sun.tools.apt.comp.AnnotationProcessingError;
+import com.sun.tools.apt.comp.UsageMessageNeededException;
+import com.sun.tools.apt.util.Bark;
+import com.sun.tools.javac.code.Source;
+import com.sun.tools.javac.code.Symbol;
+import com.sun.tools.javac.code.Type;
+import com.sun.tools.javac.file.JavacFileManager;
+import com.sun.tools.javac.jvm.Target;
+import com.sun.tools.javac.util.*;
+import com.sun.tools.javac.util.List;
+
+import javax.tools.JavaFileManager;
+import javax.tools.StandardLocation;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.MessageFormat;
-import java.util.ResourceBundle;
-import java.util.MissingResourceException;
-import java.util.StringTokenizer;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
-
 import java.net.URLClassLoader;
-import java.net.URL;
-import java.net.MalformedURLException;
-
-import javax.tools.JavaFileManager;
-import javax.tools.StandardLocation;
-
-import com.sun.tools.javac.file.JavacFileManager;
-import com.sun.tools.javac.code.Source;
-import com.sun.tools.javac.code.Symbol;
-import com.sun.tools.javac.code.Type;
-import com.sun.tools.javac.jvm.Target;
-import com.sun.tools.javac.util.*;
-
-import com.sun.tools.apt.comp.AnnotationProcessingError;
-import com.sun.tools.apt.comp.UsageMessageNeededException;
-import com.sun.tools.apt.util.Bark;
-import com.sun.mirror.apt.AnnotationProcessorFactory;
+import java.text.MessageFormat;
+import java.util.*;
 
 import static com.sun.tools.javac.file.Paths.pathToURLs;
 
